@@ -1,4 +1,4 @@
-# is-parcel-pnp-starter
+# Parcel Yarn PnP Starter
 
 A starter project for Parcel with PnP support
 
