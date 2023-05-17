@@ -58,11 +58,10 @@ exec('yarn run tsc --noEmit', (err, stdout) => {
     checkTS(true);
 
     const checkFormatting = logger.task('Checking formatting');
-    exec('yarn run prettier --check .', (err, stderr) => {
+    exec('yarn run prettier --check .', (err) => {
         if (err) {
             checkFormatting(false);
             logger.fatal(err);
-            logger.fatal(stderr);
             exit(1);
         }
         checkFormatting(true);
