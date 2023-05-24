@@ -57,25 +57,35 @@ exec('yarn run tsc --noEmit', (err, stdout) => {
     }
     checkTS(true);
 
-    const checkFormatting = logger.task('Checking formatting');
-    exec('yarn run prettier --check .', (err) => {
+    const checkFiles = logger.task('Checking Files...');
+    exec('yarn run build', (err, stdout) => {
         if (err) {
-            checkFormatting(false);
+            checkFiles(false);
             logger.fatal(err);
+            logger.warn(stdout);
             exit(1);
         }
-        checkFormatting(true);
-        const checkLint = logger.task('Checking best practices');
-        exec('yarn run eslint .', (err, stdout) => {
+        checkFiles(true);
+        const checkFormatting = logger.task('Checking formatting');
+        exec('yarn run prettier --check .', (err) => {
             if (err) {
-                checkLint(false);
+                checkFormatting(false);
                 logger.fatal(err);
-                logger.fatal(stdout);
                 exit(1);
             }
-            checkLint(true);
-            logger.info('All checks passed!');
-            logger.info('You can now submit your project!');
+            checkFormatting(true);
+            const checkLint = logger.task('Checking best practices');
+            exec('yarn run eslint .', (err, stdout) => {
+                if (err) {
+                    checkLint(false);
+                    logger.fatal(err);
+                    logger.fatal(stdout);
+                    exit(1);
+                }
+                checkLint(true);
+                logger.info('All checks passed!');
+                logger.info('You can now submit your project!');
+            });
         });
     });
 });
