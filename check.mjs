@@ -46,7 +46,7 @@ if (!existsSync(join(__dirname, 'package.json'))) {
     exit(1);
 }
 checkJSON(true);
-const checkTS = logger.task('Checking Typescript');
+const checkTS = logger.task('Checking typescript');
 exec('yarn run tsc --noEmit', (err, stdout) => {
     // Handle errors
     if (err) {
@@ -57,7 +57,7 @@ exec('yarn run tsc --noEmit', (err, stdout) => {
     }
     checkTS(true);
 
-    const checkFiles = logger.task('Checking Files...');
+    const checkFiles = logger.task('Checking files paths');
     exec('yarn run build', (err, stdout) => {
         if (err) {
             checkFiles(false);

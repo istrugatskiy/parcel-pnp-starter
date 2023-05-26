@@ -3,10 +3,13 @@
     "private": true,
     "packageManager": "yarn@3.5.1",
     "devDependencies": {
-        "@parcel/core": "^2.8.3",
+        "@parcel/config-default": "^2.9.0",
+        "@parcel/core": "^2.9.0",
+        "@parcel/resolver-glob": "^2.9.0",
         "@typescript-eslint/eslint-plugin": "^5.59.6",
         "@typescript-eslint/parser": "^5.59.6",
         "eslint": "^8.40.0",
+        "eslint-plugin-react": "^7.32.2",
         "parcel": "^2.8.3",
         "prettier": "^2.8.8",
         "process": "^0.11.10",
@@ -15,13 +18,13 @@
     "scripts": {
         "dev": "yarn run parcel ./src/**/*.html",
         "build": "yarn run parcel build ./src/**/*.html --no-source-maps",
-        "check": "yarn node ./check.mjs"
+        "check": "yarn node ./check.mjs",
+        "clean": "rm -rf .parcel-cache dist"
     },
     "alias": {
         "process": false
     },
     "dependencies": {
-        "eslint-plugin-react": "^7.32.2",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
     }

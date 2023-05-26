@@ -7,6 +7,37 @@
         <title>Document</title>
     </head>
     <body>
-        <h1>Hello, world!</h1>
+        <h1>Your html files:</h1>
+        <p>This tool will only detect files in subdirectories of src. Example: src/subdirectory/index.html</p>
+        <main></main>
+        <script type="module" defer="defer">
+            // Don't touch this file :)
+            // This file just displays all HTML files in your project.
+            // You can delete this file if you want.
+            import htmlFiles from './*/*.html';
+            const main = document.querySelector('main');
+            console.log(htmlFiles);
+            // Loop over the folder structure.
+            for (const [k, v] of Object.entries(htmlFiles)) {
+                // Create a new div for each folder.
+                const folderDiv = document.createElement('div');
+                const h2 = document.createElement('h2');
+                h2.textContent = k;
+                // Loop over the filefolderfolders in each folder.
+                for (const [key, value] of Object.entries(v)) {
+                    // Create a new div for each file.
+                    const fileDiv = document.createElement('div');
+                    const a = document.createElement('a');
+                    a.href = value;
+                    a.textContent = key + '.html';
+                    // Add the file to the file div.
+                    fileDiv.appendChild(a);
+                    // Add the file div to the folder div.
+                    folderDiv.appendChild(fileDiv);
+                }
+                // Add the folder div to the main element.
+                main.appendChild(folderDiv);
+            }
+        </script>
     </body>
 </html>

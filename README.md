@@ -16,6 +16,12 @@ To create a production build:
 yarn run build
 ```
 
+Sometimes your changes might not show up in the browser. Try reloading first. If this doesn't work use the following command to clear the cache:
+
+```
+yarn run clean
+```
+
 # IMPORTANT (read before submitting)
 
 You must test any submission you make with:
